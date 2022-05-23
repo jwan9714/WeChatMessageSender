@@ -14,6 +14,7 @@ def get_pid(p_name):
 
 
 chat_name = "chat_name"  # 需要发送消息的聊天名称
+message = "message"  # 需要发送的消息
 we_chat_path = r"C:\Program Files (x86)\Tencent\WeChat\WeChat.exe"  # 微信路径
 
 # 获取微信PID并获取微信窗口
@@ -50,6 +51,6 @@ for message_item in message_list.items():
 
 # 输入并发送消息
 edit_elem = we_chat_main_dialog.child_window(control_type='Edit', title='输入')
-edit_elem.type_keys('^a').type_keys('预约实验', with_spaces=True)
+edit_elem.type_keys('^a').type_keys(message, with_spaces=True)
 time.sleep(1)
 send_keys('{ENTER}')
