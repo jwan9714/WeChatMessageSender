@@ -31,17 +31,19 @@ search_elem.type_keys('^a').type_keys(chat_name)
 time.sleep(1)
 send_keys('{ENTER}')
 
+# 点击要发送消息的聊天
 chat_list = win_main_Dialog.child_window(control_type='List', title='会话')
 for chat_item in chat_list.items():
     if chat_name in chat_item.element_info.name:
         chat_item.click_input()
         time.sleep(1)
 
+# 获取聊天记录
 message_list = win_main_Dialog.child_window(control_type='List', title='消息')
 for message_item in message_list.items():
     print(message_item)
 
-# 输入消息
+# 输入并发送消息
 edit_elem = win_main_Dialog.child_window(control_type='Edit', title='输入')
 edit_elem.type_keys('^a').type_keys('预约实验', with_spaces=True)
 time.sleep(1)
