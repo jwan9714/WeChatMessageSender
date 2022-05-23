@@ -13,9 +13,9 @@ def get_pid(p_name):
             return pid
 
 
-# chat_name = "兴庆实验小分队"
-chat_name = "微信服务"
+chat_name = "chat_name"
 
+# 获取微信PID并获取微信窗口
 we_chat_id = get_pid("WeChat.exe")
 app = Application(backend='uia').connect(process=we_chat_id)
 win_main_Dialog = app.window(class_name='WeChatMainWndForPC')
@@ -24,7 +24,7 @@ win_main_Dialog = app.window(class_name='WeChatMainWndForPC')
 win_main_Dialog.minimize()
 win_main_Dialog.restore()
 
-# 通过搜索，定位群组
+# 通过搜索，定位聊天
 search_elem = win_main_Dialog.child_window(control_type='Edit', title='搜索')
 search_elem.click_input()
 search_elem.type_keys('^a').type_keys(chat_name)
@@ -46,7 +46,3 @@ edit_elem = win_main_Dialog.child_window(control_type='Edit', title='输入')
 edit_elem.type_keys('^a').type_keys('预约实验', with_spaces=True)
 time.sleep(1)
 send_keys('{ENTER}')
-
-# 点击发送消息
-# send_button = win_main_Dialog.child_window(control_type='Button', title='sendBtn')
-# send_button.click_input()
